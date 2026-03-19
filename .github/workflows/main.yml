@@ -1,6 +1,8 @@
 name: Build and Release
 
 on:
+  schedule:
+    - cron: "0 0 * * 1"   # 每周一自动执行
   workflow_dispatch:
 
 jobs:
@@ -18,7 +20,7 @@ jobs:
         run: |
           go mod tidy
 
-      - name: Build Linux
+      - name: Build
         run: |
           go build -o XrayR-linux
 
